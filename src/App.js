@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import CreateNote from "./components/CreateNote";
-import { Header } from "./components/Header";
+
 import Notes from "./components/Notes";
 import "./index.css";
 import { nanoid } from "nanoid";
+import SearchIcon from '@mui/icons-material/Search';
 
 function App() {
   const [notes, setNotes] = useState(
@@ -17,6 +18,8 @@ function App() {
   const loadMore = ()=> {
     setNumOfNotes(numOfNotes + numOfNotes);
   }
+  
+  
 
   const addNote = (title, description) => {
     const date = new Date();
@@ -47,11 +50,40 @@ function App() {
     setNotes(newNotes);
   };
   
-  const slice = notes.slice(0, numOfNotes);
+  //const slice = notes.slice(0, numOfNotes);
   return (
+   
     <div className="container">
-      <Header handleSearchNote={setSearchText} />
-      {notes.map((note) => (
+      
+    <h1 className='myHeader'>Notes</h1>
+      <div className='search'>
+        
+        <SearchIcon  className='searchIcon' size='1.3em'/>
+        <input
+        onChange={e => {setSearchText(e.target.value)}} 
+				type='text'
+				placeholder='type to search...'
+			/>
+       </div>
+       {
+       notes.map((val) => {
+         return <div>
+           
+         </div>
+       })
+     }
+     {notes.filter((val)=> {
+        if(searchText == "" ) {
+          return val
+        
+        
+        } else if (val.title.toLowerCase().includes(searchText.toLocaleLowerCase())) {
+          return val
+        }
+    
+      
+    
+      }).slice(0, numOfNotes).map((note) => (
         <Notes
           id={note.id}
           title={note.title}
@@ -63,11 +95,15 @@ function App() {
         />
       ))}
       <CreateNote handleAddNote={addNote} />
-      <div>
+      <div className="footerBttn">
         
-      <button onClick={()=> loadMore()}>Load more</button>
+     <button className="bttn" onClick={()=> loadMore()}>Load more</button>
+     </div>
+     
       </div>
-    </div>
+   
+     
+    
   );
 }
 
