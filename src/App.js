@@ -16,6 +16,7 @@ function App() {
   const [notes, setNotes] = useState(
     JSON.parse(localStorage.getItem("react-notes")) ?? []
   );
+  
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
     localStorage.setItem("react-notes", JSON.stringify(notes));
@@ -43,22 +44,26 @@ function App() {
     setNotes(newNotes);
   };
 
-  function editNote(id,title,description, date){
-        const tobeUpdated = notes.find(singleNote => singleNote.id === id)
-        tobeUpdated.id = id;
-        tobeUpdated.title = title;
-        tobeUpdated.description = description;
-        tobeUpdated.date =  new Date().toLocaleString();
-        setNotes([...notes])
-    console.log(notes)
-        
-      }
+   function editNote(id,title,description, date){
+    const tobeUpdated = notes.find(singleNote => singleNote.id === id)
+    tobeUpdated.id = id;
+    tobeUpdated.title = title;
+    tobeUpdated.description = description;
+    tobeUpdated.date =  new Date().toLocaleString();
+    setNotes([...notes])
     
+console.log(notes)
+    
+  }
+
+
+  
 
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
+  
   
   return (
     
@@ -86,6 +91,7 @@ function App() {
          </div>
        })
      }
+     
      {notes.filter((val)=> {
         if(searchText == "" ) {
           return val
@@ -96,7 +102,7 @@ function App() {
         }
     
       
-    
+   
       }).slice(0, numOfNotes).map((note) => (
         <Notes
           id={note.id}
@@ -118,7 +124,7 @@ function App() {
      
       </div>
    
-     
+   
     
   );
 }

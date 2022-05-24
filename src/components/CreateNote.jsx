@@ -42,6 +42,7 @@ const CreateNote = ({handleAddNote}) => {
   return (
     <div className="notes note2">
         <form className='form'>
+        
       {
           isExpanded && (
             
@@ -50,12 +51,12 @@ const CreateNote = ({handleAddNote}) => {
            onChange={handleChange}
            name="title"
             value={title} />
+            
+            
 
-          )
-      }
-      
-    
-  <textarea
+       )
+      } 
+      <textarea
   name="description"
   id="editArea"
    rows="8"
@@ -64,6 +65,8 @@ const CreateNote = ({handleAddNote}) => {
    placeholder="Type your note here"
    onClick={expand}
    onChange={handleChange2}></textarea>
+    
+  
    <div className="footer">
        <small>{charLimit - description.length} remaining</small>
        <button 
