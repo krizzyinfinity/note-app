@@ -7,9 +7,10 @@
  
 }
 
+
 .container {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 20px auto;
   padding-left: 15px;
   padding-right: 15px;
   min-height: 100vh;
@@ -40,6 +41,7 @@ small {
   margin-bottom: 1rem;
   padding: 10px;
   background-color: darkslateblue;
+  
 }
 .notes {
   display: flex;
@@ -51,7 +53,10 @@ small {
   padding: 2rem;
 margin-bottom: 20px;
   min-height: 270px;
+  
+box-shadow: rgba(66, 7, 133, 0.35) 0px 5px 15px;
 }
+
 .notesList {
   display: grid;
 
@@ -65,11 +70,13 @@ margin-bottom: 20px;
 }
 .icon {
   cursor: pointer;
+
+  
 }
 
   .notes .note2 {
     
-      background-color: #ad2a7d;
+    background-color: blue;  
     
   }
   textarea {
@@ -92,7 +99,7 @@ margin-bottom: 20px;
 	background-color: #cad3e3;
 	width: 100%;
   height: 6vh;
-  padding-left: .9rem;
+  padding-left: .5rem;
   font-size: 1.2rem;
  
 
@@ -105,8 +112,8 @@ margin-bottom: 20px;
   font-size:5rem ;
   color: black;
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 .show {
   display: block;
@@ -123,4 +130,38 @@ margin-bottom: 20px;
   border-radius: 15px;
   font-weight: bold;
   font-size: 1rem;
+  cursor: pointer;
+}
+.note2 {
+  background-color: darkslateblue;
+}
+.btn {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid darkslateblue;
+  outline: none;
+  transition: 1s ease-in-out;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+  
+
+
+.btn:hover {
+  transition: 1s ease-in-out;
+  background: darkslateblue;
+  color: aliceblue;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }

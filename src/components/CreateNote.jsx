@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import  "./CreateNote.css"
 const CreateNote = ({handleAddNote}) => {
     const [description, setDescription] = useState("");
         const [title, setTitle] = useState("");
@@ -53,17 +53,13 @@ const CreateNote = ({handleAddNote}) => {
 
           )
       }
-      <input type="text"
-            placeholder="Type your title"
-           onChange={handleChange}
-           name="title"
-            value={title} />
+      
     
   <textarea
   name="description"
   id="editArea"
-   rows={isExpanded ? 3 : 1}
-   cols="10"
+   rows="8"
+   cols="100"
    value={description}
    placeholder="Type your note here"
    onClick={expand}
@@ -71,7 +67,7 @@ const CreateNote = ({handleAddNote}) => {
    <div className="footer">
        <small>{charLimit - description.length} remaining</small>
        <button 
-         onClick={handleSave} className="saveBttn">Save</button>
+         onClick={handleSave} className="save">Save</button>
          
          
    </div>

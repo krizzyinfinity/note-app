@@ -1,12 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import CreateNote from "./components/CreateNote";
-
+import { useReactToPrint } from "react-to-print";
 import Notes from "./components/Notes";
 import "./index.css";
 import { nanoid } from "nanoid";
 import SearchIcon from '@mui/icons-material/Search';
 
 function App() {
+
+  // for printing to pdf
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
   const [notes, setNotes] = useState(
     JSON.parse(localStorage.getItem("react-notes")) ?? []
   );
@@ -15,6 +21,10 @@ function App() {
     localStorage.setItem("react-notes", JSON.stringify(notes));
   }, [notes]);
   const[numOfNotes, setNumOfNotes]=useState(3);
+
+  // pagination ( load more button instead of classic pagination
+  // as not that many data, but of course application can get more data and classic 
+  // pagination would be needed)
   const loadMore = ()=> {
     setNumOfNotes(numOfNotes + numOfNotes);
   }
@@ -38,7 +48,7 @@ function App() {
         tobeUpdated.id = id;
         tobeUpdated.title = title;
         tobeUpdated.description = description;
-        tobeUpdated.date = date;
+        tobeUpdated.date =  new Date().toLocaleString();
         setNotes([...notes])
     console.log(notes)
         
@@ -50,21 +60,25 @@ function App() {
     setNotes(newNotes);
   };
   
-  //const slice = notes.slice(0, numOfNotes);
   return (
+    
    
-    <div className="container">
+    <div ref={componentRef} className="container">
       
     <h1 className='myHeader'>Notes</h1>
       <div className='search'>
         
-        <SearchIcon  className='searchIcon' size='1.3em'/>
+      <SearchIcon  className='searchIcon' size='1.3em'/>
         <input
         onChange={e => {setSearchText(e.target.value)}} 
 				type='text'
 				placeholder='type to search...'
 			/>
+      
        </div>
+
+       <CreateNote handleAddNote={addNote} />
+       
        {
        notes.map((val) => {
          return <div>
@@ -92,12 +106,14 @@ function App() {
           handleDeleteNote={deleteNote}
           handleAddNote={addNote}
           onEdit={editNote}
+         
         />
       ))}
-      <CreateNote handleAddNote={addNote} />
       <div className="footerBttn">
         
      <button className="bttn" onClick={()=> loadMore()}>Load more</button>
+     
+     <button onClick={handlePrint} className="btn">  Download all</button>
      </div>
      
       </div>
