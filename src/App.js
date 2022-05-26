@@ -15,9 +15,7 @@ const App = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  const [selected2, setSelected2] = useState(
-    localStorage.getItem("react-notes") === "true"
-  );
+  
 
   const [notes, setNotes] = useState(
     JSON.parse(localStorage.getItem("react-notes")) ?? []

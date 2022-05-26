@@ -11,9 +11,7 @@ const Notes = ({
   date,
   handleDeleteNote,
   onEdit,
-  handleChange,
-  handleChange2,
-  handleSave,
+  
 }) => {
   const [show, setShow] = useState(false);
   // used for printing to pdf

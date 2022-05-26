@@ -5,12 +5,7 @@ const CreateNote = ({ handleAddNote }) => {
   const [title, setTitle] = useState("");
   const [isExpanded, setExpanded] = useState(false);
   const charLimit = 200;
-  const [note, setNote] = useState({
-    id: "",
-    title: "",
-    description: "",
-    date: "",
-  });
+ 
 
   const handleChange = (e) => {
     setTitle(e.target.value);
