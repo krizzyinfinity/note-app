@@ -53,7 +53,7 @@ const App = () => {
     tobeUpdated.description = description;
     tobeUpdated.date = new Date().toLocaleString();
 
-    setNotes([...notes, tobeUpdated]);
+    setNotes([...notes]);
 
     console.log(notes);
   };
