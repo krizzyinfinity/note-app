@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("react-notes", JSON.stringify(notes));
   }, [notes]);
-  // const [numOfNotes, setNumOfNotes] = useState(3);
+  // const [numOfNotes, setNumOfNotes] = useState(6);
 
   // pagination ( load more button instead of classic pagination
   // as not that many data, but of course application can get more data and classic
